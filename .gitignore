@@ -22,5 +22,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# local stuff
 .idea
 .idea/*
+README.md.old
+package.json.lock
