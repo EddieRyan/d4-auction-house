@@ -1,13 +1,14 @@
-import {MouseEvent} from "react";
+import {MouseEvent, useState} from "react";
 
 function ListGroup() {
     let items = ["New York", "Tokyo", "Dublin", "Paris"]
 
+    // Hook - taps into builtin features of react
+    const [selectedIndex, setSelectedIndex] = useState(-1);
+
     const getMessage = () => {
         return items.length === 0 && <p>No item found.</p>;
     }
-
-    const handleClick = (event: MouseEvent) => console.log(event);
 
     return (
         <>
@@ -16,9 +17,9 @@ function ListGroup() {
             <ul className="list-group">
                 {items.map((item, index) => (
                     <li
-                        className="list-group-item"
+                        className={selectedIndex === index ? 'list-group-item active' : 'list-group-item'}
                         key={item}
-                        onClick={handleClick}
+                        onClick={() => {setSelectedIndex(index)}}
                     >
                         {item}
                     </li>
