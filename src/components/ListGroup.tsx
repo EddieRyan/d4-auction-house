@@ -1,13 +1,14 @@
-import {MouseEvent, useState} from "react";
+import {useState} from "react";
 
 // {items : [], heading: string}
 interface ListGroupProps {
     items: string[];
     heading: string;
+    onSelectItem: (item: string) => void;
 }
 
-function ListGroup({items, heading}: ListGroupProps) {
-    // Hook - taps into builtin features of react
+function ListGroup({items, heading, onSelectItem}: ListGroupProps) {
+    // Hook - taps into builtin features of React
     const [selectedIndex, setSelectedIndex] = useState(-1);
 
     const getMessage = () => {
@@ -23,7 +24,10 @@ function ListGroup({items, heading}: ListGroupProps) {
                     <li
                         className={selectedIndex === index ? 'list-group-item active' : 'list-group-item'}
                         key={item}
-                        onClick={() => {setSelectedIndex(index)}}
+                        onClick={() => {
+                            setSelectedIndex(index);
+                            onSelectItem(item);
+                        }}
                     >
                         {item}
                     </li>
