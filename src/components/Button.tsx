@@ -1,6 +1,7 @@
 interface Props {
     children: String;
-    color?: String; // ? makes the variable optional, we've added a default via color='primary'
+    // ? makes the variable optional, we've added a default via color='primary'
+    color?: 'primary' | 'secondary' | 'danger' ;
     onClick: () => void;
 }
 
